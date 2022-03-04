@@ -3,3 +3,19 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  text-align: center;
+}
+
+.header {
+  padding: 1rem;
+}
+
+.buttons {
+  padding: 1rem;
+}
+
+#clear {
+  padding: 0 1rem;
+}
