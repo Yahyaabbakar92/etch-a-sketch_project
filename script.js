@@ -1,6 +1,13 @@
 const container = document.getElementById("grid-container");
 const resetBtn = document.getElementById("reset");
 
+function newGrid() {
+  resetBtn.addEventListener("click", function () {
+    let squares = prompt("Please enter the number of squares?");
+    console.log(squares);
+  });
+}
+
 function createGrid() {
   for (let i = 0; i < 256; i++) {
     const grid = document.createElement("div");
@@ -14,3 +21,4 @@ function createGrid() {
 }
 
 createGrid();
+newGrid();
