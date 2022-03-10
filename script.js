@@ -25,25 +25,34 @@ function userInput() {
   newGridBtn.addEventListener("click", function () {
     let squares = prompt("Please enter the number of squares?");
     console.log(squares); //here just to see what will print out in the console
-    //The function to remove the default grid
-    container.remove();
-    //Creating a new container that will replace the default grid
-    const newContainer = document.createElement("div");
-    newContainer.classList.add("grid-container");
-    body.appendChild(newContainer);
-    //The step that will generate new divs to append to the new container
-    for (let i = 0; i < squares * squares; i++) {
-      const newDiv = document.createElement("div");
-      newDiv.classList.add("new-grid-item");
-      newContainer.setAttribute(
-        "style",
-        `grid-template-columns: repeat(${squares}, 1fr); grid-template-rows: repeat(${squares}, 1fr);`
-      );
+    if (isNaN(squares)) {
+      prompt("Invalid! Enter a number");
+    } else if (squares < 1 || squares > 100) {
+      prompt("Invalid number! Enter a number between 1 and 100");
+    } else {
+      //The function to remove the default grid
+      container.remove();
+      //Creating a new container that will replace the default grid
+      const newContainer = document.createElement("div");
+      newContainer.classList.add("grid-container");
+      body.appendChild(newContainer);
+      //The step that will generate new divs to append to the new container
+      for (let i = 0; i < squares * squares; i++) {
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("new-grid-item");
+        newContainer.setAttribute(
+          "style",
+          `grid-template-columns: repeat(${squares}, 1fr); grid-template-rows: repeat(${squares}, 1fr);`
+        );
 
-      newDiv.addEventListener("mouseover", function () {
-        newDiv.setAttribute("style", "background-color:gray; transition:0.4s");
-      });
-      newContainer.appendChild(newDiv);
+        newDiv.addEventListener("mouseover", function () {
+          newDiv.setAttribute(
+            "style",
+            "background-color:gray; transition:0.4s"
+          );
+        });
+        newContainer.appendChild(newDiv);
+      }
     }
   });
 }
