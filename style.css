@@ -22,8 +22,13 @@ body {
 
 #grid-container {
   display: grid;
-  /* grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr); */
+  max-width: 800px;
+  height: 500px;
+  margin: 1rem auto;
+}
+
+.grid-container {
+  display: grid;
   max-width: 800px;
   height: 500px;
   margin: 1rem auto;
