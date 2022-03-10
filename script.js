@@ -1,39 +1,47 @@
 const container = document.getElementById("grid-container");
-const resetBtn = document.getElementById("reset");
+const newGridBtn = document.getElementById("reset");
 
+//The function to create the default 16X16 grid
 function createGrid() {
   for (let i = 0; i < 256; i++) {
-    const grid = document.createElement("div");
-    grid.classList.add("grid-item");
+    //Creating and appending new divs into the container
+    const div = document.createElement("div");
+    div.classList.add("grid-item");
     container.setAttribute(
       "style",
       "grid-template-columns: repeat(16, 1fr); grid-template-rows: repeat(16, 1fr);"
     );
 
-    grid.addEventListener("mouseover", function () {
-      grid.setAttribute("style", "background-color:red; transition:0.4s");
+    div.addEventListener("mouseover", function () {
+      div.setAttribute("style", "background-color:red; transition:0.4s");
     });
-    container.appendChild(grid);
+    container.appendChild(div);
   }
 }
 
+//The function when the button is pressed to generate a new grid
 function userInput() {
-  resetBtn.addEventListener("click", function () {
+  newGridBtn.addEventListener("click", function () {
     let squares = prompt("Please enter the number of squares?");
     console.log(squares);
-
+    //The function to remove the default grid
+    container.remove();
+    //Creating a new container that will replace the default grid
+    const newContainer = document.createElement("div");
+    newContainer.classList.add("grid-container");
+    //The step that will generate new divs to append to the new container
     for (let i = 0; i < squares * squares; i++) {
-      const div = document.createElement("div");
-      div.classList.add("new-grid-item");
-      container.setAttribute(
+      const newDiv = document.createElement("div");
+      newDiv.classList.add("new-grid-item");
+      newContainer.setAttribute(
         "style",
         `grid-template-columns: repeat(${squares}, 1fr); grid-template-rows: repeat(${squares}, 1fr);`
       );
 
-      div.addEventListener("mouseover", function () {
-        div.setAttribute("style", "background-color:red; transition:0.4s");
+      newDiv.addEventListener("mouseover", function () {
+        newDiv.setAttribute("style", "background-color:black; transition:0.4s");
       });
-      container.appendChild(div);
+      newContainer.appendChild(newDiv);
     }
   });
 }
