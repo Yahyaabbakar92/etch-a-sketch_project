@@ -13,7 +13,7 @@ function createGrid() {
     div.classList.add("grid-item");
 
     div.addEventListener("mouseover", function () {
-      div.setAttribute("style", "background-color:gray; transition:0.4s;");
+      div.setAttribute("style", "background-color:#808080; transition:0.4s;");
     });
     container.appendChild(div);
   }
@@ -46,7 +46,7 @@ function upgradeGrid() {
         newDiv.addEventListener("mouseover", function () {
           newDiv.setAttribute(
             "style",
-            "background-color:gray; transition:0.4s"
+            "background-color:#808080; transition:0.4s"
           );
         });
         container.appendChild(newDiv);
