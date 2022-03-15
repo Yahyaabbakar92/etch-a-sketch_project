@@ -1,49 +1,47 @@
 const container = document.getElementById("grid-container");
-const newGridBtn = document.getElementById("reset");
-const body = document.querySelector("body");
+const newGridButton = document.getElementById("reset");
 
 //The function to create the default 16X16 grid
 function createGrid() {
+  container.setAttribute(
+    "style",
+    "grid-template-columns: repeat(16, 1fr); grid-template-rows: repeat(16, 1fr);"
+  );
   for (let i = 0; i < 256; i++) {
-    //Creating and appending new divs into the container
+    //Creating and appending the divs to the container
     const div = document.createElement("div");
     div.classList.add("grid-item");
-    container.setAttribute(
-      "style",
-      "grid-template-columns: repeat(16, 1fr); grid-template-rows: repeat(16, 1fr);"
-    );
 
     div.addEventListener("mouseover", function () {
-      div.setAttribute("style", "background-color:gray; transition:0.4s");
+      div.setAttribute("style", "background-color:gray; transition:0.4s;");
     });
     container.appendChild(div);
   }
 }
 
 //The function when the button is pressed to generate a new grid
-function userInput() {
-  newGridBtn.addEventListener("click", function () {
-    let squares = prompt("Please enter the number of squares?");
-    console.log(squares); //here just to see what will print out in the console
-    if (isNaN(squares)) {
+function upgradeGrid() {
+  newGridButton.addEventListener("click", function () {
+    let squares = prompt(
+      "Please enter a number between 1 and 100 of sides for the grid"
+    );
+
+    if (isNaN(squares) || squares === null) {
       prompt("Invalid! Enter a number");
     } else if (squares < 1 || squares > 100) {
       prompt("Invalid number! Enter a number between 1 and 100");
     } else {
-      //The function to remove the default grid
-      container.remove();
-      //Creating a new container that will replace the default grid
-      const newContainer = document.createElement("div");
-      newContainer.classList.add("grid-container");
-      body.appendChild(newContainer);
-      //The step that will generate new divs to append to the new container
+      //The function to reset and create a dynamic grid
+      container.innerHTML = "";
+      container.setAttribute(
+        "style",
+        `grid-template-columns: repeat(${squares}, 1fr); grid-template-rows: repeat(${squares}, 1fr);`
+      );
+
+      //The step that will generate new divs and append them to the container
       for (let i = 0; i < squares * squares; i++) {
         const newDiv = document.createElement("div");
-        newDiv.classList.add("new-grid-item");
-        newContainer.setAttribute(
-          "style",
-          `grid-template-columns: repeat(${squares}, 1fr); grid-template-rows: repeat(${squares}, 1fr);`
-        );
+        newDiv.classList.add("grid-item");
 
         newDiv.addEventListener("mouseover", function () {
           newDiv.setAttribute(
@@ -51,11 +49,11 @@ function userInput() {
             "background-color:gray; transition:0.4s"
           );
         });
-        newContainer.appendChild(newDiv);
+        container.appendChild(newDiv);
       }
     }
   });
 }
 
 createGrid();
-userInput();
+upgradeGrid();
