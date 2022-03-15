@@ -16,10 +16,24 @@ body {
 
 .buttons {
   padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 #reset {
-  padding: 0 1rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+#rgb {
+  padding: 0.625rem 1.25rem;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  border-radius: 16px;
 }
 
 #grid-container {

@@ -13,7 +13,7 @@ function createGrid() {
     div.classList.add("grid-item");
 
     div.addEventListener("mouseover", function () {
-      div.setAttribute("style", "background-color:#808080; transition:0.4s;");
+      div.setAttribute("style", "background-color:#1a1a1a; transition:0.4s;");
     });
     container.appendChild(div);
   }
@@ -22,9 +22,7 @@ function createGrid() {
 //The function when the button is pressed to generate a new grid
 function upgradeGrid() {
   newGridButton.addEventListener("click", function () {
-    let squares = prompt(
-      "Please enter a number between 1 and 100 of sides for the grid"
-    );
+    let squares = prompt("Please enter the number of sides(1-100)");
 
     if (isNaN(squares) || squares === null) {
       prompt("Invalid! Enter a number");
@@ -46,7 +44,7 @@ function upgradeGrid() {
         newDiv.addEventListener("mouseover", function () {
           newDiv.setAttribute(
             "style",
-            "background-color:#808080; transition:0.4s"
+            "background-color:#1a1a1a; transition:0.4s"
           );
         });
         container.appendChild(newDiv);
