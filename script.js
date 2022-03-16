@@ -1,5 +1,6 @@
 const container = document.getElementById("grid-container");
 const newGridButton = document.getElementById("reset");
+const colorButton = document.getElementById("rgb");
 
 //The function to create the default 16X16 grid
 function createGrid() {
@@ -13,8 +14,17 @@ function createGrid() {
     div.classList.add("grid-item");
 
     div.addEventListener("mouseover", function () {
-      div.setAttribute("style", "background-color:#1a1a1a; transition:0.4s;");
+      div.setAttribute("style", "background-color:#bfbfbf; transition:0.4s;");
     });
+
+    //The event that occurs when the rgb button is clicked to generate random colors for the grid
+    colorButton.addEventListener("click", function () {
+      div.addEventListener("mouseover", function () {
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        div.setAttribute("style", `background-color:#${randomColor}`);
+      });
+    });
+
     container.appendChild(div);
   }
 }
@@ -44,9 +54,20 @@ function upgradeGrid() {
         newDiv.addEventListener("mouseover", function () {
           newDiv.setAttribute(
             "style",
-            "background-color:#1a1a1a; transition:0.4s"
+            "background-color:#bfbfbf; transition:0.4s"
           );
         });
+
+        //The event that occurs when the rgb button is clicked to generate random colors for the grid
+        colorButton.addEventListener("click", function () {
+          newDiv.addEventListener("mouseover", function () {
+            const randomColor = Math.floor(Math.random() * 16777215).toString(
+              16
+            );
+            newDiv.setAttribute("style", `background-color:#${randomColor}`);
+          });
+        });
+
         container.appendChild(newDiv);
       }
     }
