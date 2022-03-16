@@ -12,3 +12,5 @@ Also when creating the random color grids, I repeated the function twice and tha
 restructure my code again but as of now things are working.
 The remaining issue is when I give the wrong input on the prompt, it asks me to give the correct input and even the correct
 input doesn't reset the grid. So that needs fixing.
+
+live site: https://yahyaabbakar92.github.io/etch-a-sketch_project/
